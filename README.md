@@ -113,6 +113,8 @@ OCR currently triggers CleanShot OCR through the URL Scheme. It does not guarant
 
 `cleanshot_quick_access` and `cleanshot_settings` do not take parameters.
 
+See [CleanShot API Coverage](docs/cleanshot-api-coverage.md) for the current URL Scheme command coverage table, test coverage, agent verification status, and pre-v1.0 audit checklist.
+
 Example prompts:
 
 ```text

@@ -1,5 +1,10 @@
 # Changelog
 
+## Unreleased / 0.5.0
+
+- Added CleanShot API coverage audit documentation.
+- Added pre-v1.0 API audit checklist.
+
 ## Unreleased / 0.4.0
 
 - Added `cleanshot_annotate_file`
