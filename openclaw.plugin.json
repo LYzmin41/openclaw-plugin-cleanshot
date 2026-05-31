@@ -10,7 +10,9 @@
     "tools": [
       "cleanshot_capture",
       "cleanshot_all_in_one",
-      "cleanshot_scrolling_capture"
+      "cleanshot_scrolling_capture",
+      "cleanshot_ocr",
+      "cleanshot_record_screen"
     ]
   },
   "configSchema": {

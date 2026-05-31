@@ -8,3 +8,7 @@
 - Use CleanShot All-In-One mode.
 - Start a CleanShot scrolling capture.
 - Call cleanshot_scrolling_capture with start true and autoscroll true.
+- Use CleanShot OCR to recognize text from the screen.
+- Call cleanshot_ocr with linebreaks true.
+- Start a CleanShot screen recording.
+- Call cleanshot_record_screen with x 100 y 100 width 800 and height 600.

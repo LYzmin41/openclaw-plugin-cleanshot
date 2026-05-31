@@ -37,6 +37,11 @@ export interface CleanShotScrollingCaptureParams extends CleanShotRegionParams {
   autoscroll?: boolean;
 }
 
+export interface CleanShotOcrParams extends CleanShotRegionParams {
+  filepath?: string;
+  linebreaks?: boolean;
+}
+
 export interface OpenClawToolContext {
   config?: CleanShotPluginConfig;
 }
@@ -95,6 +100,22 @@ function optionalBoolean(value: unknown, key: string): boolean | undefined {
   return value;
 }
 
+function optionalString(value: unknown, key: string): string | undefined {
+  if (value === undefined) {
+    return undefined;
+  }
+
+  if (typeof value !== "string") {
+    throw new Error(`${key} must be a string.`);
+  }
+
+  if (!value.trim()) {
+    throw new Error(`${key} must not be empty.`);
+  }
+
+  return value;
+}
+
 function normalizeRegionParams(record: Record<string, unknown>): CleanShotRegionParams {
   return {
     x: optionalNumber(record.x, "x"),
@@ -103,6 +124,14 @@ function normalizeRegionParams(record: Record<string, unknown>): CleanShotRegion
     height: optionalNumber(record.height, "height"),
     display: optionalNumber(record.display, "display")
   };
+}
+
+function normalizeRegionOnlyParams(params: unknown, label: string): CleanShotRegionParams {
+  if (typeof params !== "object" || params === null) {
+    throw new Error(`${label} parameters must be an object.`);
+  }
+
+  return normalizeRegionParams(params as Record<string, unknown>);
 }
 
 function normalizeCaptureParams(params: unknown): CleanShotCaptureParams {
@@ -128,11 +157,7 @@ function normalizeCaptureParams(params: unknown): CleanShotCaptureParams {
 }
 
 function normalizeAllInOneParams(params: unknown): CleanShotRegionParams {
-  if (typeof params !== "object" || params === null) {
-    throw new Error("All-In-One parameters must be an object.");
-  }
-
-  return normalizeRegionParams(params as Record<string, unknown>);
+  return normalizeRegionOnlyParams(params, "All-In-One");
 }
 
 function normalizeScrollingCaptureParams(params: unknown): CleanShotScrollingCaptureParams {
@@ -147,6 +172,24 @@ function normalizeScrollingCaptureParams(params: unknown): CleanShotScrollingCap
     start: optionalBoolean(record.start, "start"),
     autoscroll: optionalBoolean(record.autoscroll, "autoscroll")
   };
+}
+
+function normalizeOcrParams(params: unknown): CleanShotOcrParams {
+  if (typeof params !== "object" || params === null) {
+    throw new Error("OCR parameters must be an object.");
+  }
+
+  const record = params as Record<string, unknown>;
+
+  return {
+    ...normalizeRegionParams(record),
+    filepath: optionalString(record.filepath, "filepath"),
+    linebreaks: optionalBoolean(record.linebreaks, "linebreaks")
+  };
+}
+
+function normalizeRecordScreenParams(params: unknown): CleanShotRegionParams {
+  return normalizeRegionOnlyParams(params, "Record screen");
 }
 
 function getPluginConfig(api: OpenClawPluginApi): CleanShotPluginConfig {
@@ -211,6 +254,39 @@ export async function cleanshotScrollingCapture(
     display: params.display,
     start: params.start,
     autoscroll: params.autoscroll
+  });
+  const result = await openCleanShotUrl(url);
+  const includeUrl = context.config?.includeGeneratedUrlInResult ?? true;
+
+  return includeUrl ? result : { ok: result.ok, launched: result.launched };
+}
+
+export async function cleanshotOcr(params: CleanShotOcrParams, context: OpenClawToolContext = {}) {
+  const url = buildCleanShotUrl("capture-text", {
+    filepath: params.filepath,
+    x: params.x,
+    y: params.y,
+    width: params.width,
+    height: params.height,
+    display: params.display,
+    linebreaks: params.linebreaks
+  });
+  const result = await openCleanShotUrl(url);
+  const includeUrl = context.config?.includeGeneratedUrlInResult ?? true;
+
+  return includeUrl ? result : { ok: result.ok, launched: result.launched };
+}
+
+export async function cleanshotRecordScreen(
+  params: CleanShotRegionParams,
+  context: OpenClawToolContext = {}
+) {
+  const url = buildCleanShotUrl("record-screen", {
+    x: params.x,
+    y: params.y,
+    width: params.width,
+    height: params.height,
+    display: params.display
   });
   const result = await openCleanShotUrl(url);
   const includeUrl = context.config?.includeGeneratedUrlInResult ?? true;
@@ -317,6 +393,59 @@ export const plugin = {
             {
               type: "text",
               text: "CleanShot scrolling capture launched."
+            }
+          ],
+          details: result
+        };
+      }
+    });
+
+    api.registerTool({
+      name: "cleanshot_ocr",
+      label: "CleanShot OCR",
+      description: "Start CleanShot OCR / text recognition from screen or image file.",
+      parameters: {
+        ...regionParameterSchema,
+        properties: {
+          filepath: { type: "string" },
+          ...regionParameterSchema.properties,
+          linebreaks: { type: "boolean" }
+        }
+      },
+      async execute(_toolCallId: string, rawParams: unknown) {
+        const params = normalizeOcrParams(rawParams);
+        const result = await cleanshotOcr(params, {
+          config: getPluginConfig(api)
+        });
+
+        return {
+          content: [
+            {
+              type: "text",
+              text: "CleanShot OCR launched."
+            }
+          ],
+          details: result
+        };
+      }
+    });
+
+    api.registerTool({
+      name: "cleanshot_record_screen",
+      label: "CleanShot Record Screen",
+      description: "Start CleanShot screen recording mode.",
+      parameters: regionParameterSchema,
+      async execute(_toolCallId: string, rawParams: unknown) {
+        const params = normalizeRecordScreenParams(rawParams);
+        const result = await cleanshotRecordScreen(params, {
+          config: getPluginConfig(api)
+        });
+
+        return {
+          content: [
+            {
+              type: "text",
+              text: "CleanShot screen recording launched."
             }
           ],
           details: result

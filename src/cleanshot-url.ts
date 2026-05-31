@@ -5,7 +5,9 @@ export const supportedCleanShotCommands = [
   "capture-window",
   "self-timer",
   "all-in-one",
-  "scrolling-capture"
+  "scrolling-capture",
+  "capture-text",
+  "record-screen"
 ] as const;
 
 export type CleanShotCommand = (typeof supportedCleanShotCommands)[number];

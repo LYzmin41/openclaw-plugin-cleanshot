@@ -45,6 +45,8 @@ Expected runtime tool:
 cleanshot_capture
 cleanshot_all_in_one
 cleanshot_scrolling_capture
+cleanshot_ocr
+cleanshot_record_screen
 ```
 
 Example successful agent prompt:
@@ -68,6 +70,8 @@ Current tools:
 - `cleanshot_capture`: start a standard CleanShot capture.
 - `cleanshot_all_in_one`: launch CleanShot All-In-One mode.
 - `cleanshot_scrolling_capture`: start CleanShot scrolling capture.
+- `cleanshot_ocr`: start CleanShot OCR / text recognition from screen or image file.
+- `cleanshot_record_screen`: start CleanShot screen recording mode.
 
 `cleanshot_capture` supports these capture modes:
 
@@ -91,12 +95,22 @@ For area-style captures, it can also pass optional numeric `x`, `y`, `width`, `h
 
 `cleanshot_scrolling_capture` accepts optional numeric `x`, `y`, `width`, `height`, and `display` parameters, plus optional boolean `start` and `autoscroll` parameters.
 
+`cleanshot_ocr` accepts optional `filepath`, numeric `x`, `y`, `width`, `height`, and `display` parameters, plus optional boolean `linebreaks`.
+
+OCR currently triggers CleanShot OCR through the URL Scheme. It does not guarantee returning recognized text to OpenClaw; recognized text may be handled by CleanShot UI or clipboard depending on CleanShot behavior and settings.
+
+`cleanshot_record_screen` accepts optional numeric `x`, `y`, `width`, `height`, and `display` parameters.
+
 Example prompts:
 
 ```text
 Use CleanShot All-In-One mode.
 Start a CleanShot scrolling capture.
 Call cleanshot_scrolling_capture with start true and autoscroll true.
+Use CleanShot OCR to recognize text from the screen.
+Call cleanshot_ocr with linebreaks true.
+Start a CleanShot screen recording.
+Call cleanshot_record_screen for display 1.
 ```
 
 ## Security Model

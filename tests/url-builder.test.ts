@@ -96,4 +96,52 @@ describe("buildCleanShotUrl", () => {
       "cleanshot://scrolling-capture?x=10&y=20&width=300&height=200&display=1"
     );
   });
+
+  it("builds capture text with no params", () => {
+    assert.equal(buildCleanShotUrl("capture-text"), "cleanshot://capture-text");
+  });
+
+  it("builds capture text with filepath", () => {
+    assert.equal(
+      buildCleanShotUrl("capture-text", { filepath: "/tmp/example image.png" }),
+      "cleanshot://capture-text?filepath=%2Ftmp%2Fexample+image.png"
+    );
+  });
+
+  it("builds capture text with linebreaks", () => {
+    assert.equal(
+      buildCleanShotUrl("capture-text", { linebreaks: true }),
+      "cleanshot://capture-text?linebreaks=true"
+    );
+  });
+
+  it("builds capture text with coordinates and display", () => {
+    assert.equal(
+      buildCleanShotUrl("capture-text", {
+        x: 10,
+        y: 20,
+        width: 300,
+        height: 200,
+        display: 1
+      }),
+      "cleanshot://capture-text?x=10&y=20&width=300&height=200&display=1"
+    );
+  });
+
+  it("builds record screen with no params", () => {
+    assert.equal(buildCleanShotUrl("record-screen"), "cleanshot://record-screen");
+  });
+
+  it("builds record screen with coordinates and display", () => {
+    assert.equal(
+      buildCleanShotUrl("record-screen", {
+        x: 10,
+        y: 20,
+        width: 300,
+        height: 200,
+        display: 1
+      }),
+      "cleanshot://record-screen?x=10&y=20&width=300&height=200&display=1"
+    );
+  });
 });

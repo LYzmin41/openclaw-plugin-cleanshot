@@ -1,5 +1,11 @@
 # Changelog
 
+## Unreleased / 0.3.0
+
+- Added `cleanshot_ocr`
+- Added `cleanshot_record_screen`
+- Added URL builder tests for `capture-text` and `record-screen`
+
 ## Unreleased / 0.2.0
 
 - Added `cleanshot_all_in_one`
