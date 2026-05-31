@@ -2,13 +2,18 @@
 
 ## Release Candidate Status
 
-- Current release candidate: `1.0.1`
-- Current version: `1.0.1`
+- Current release candidate: `1.0.2`
+- Current version: `1.0.2`
 - Next planned checkpoint: none
-- Planned stable release: `1.0.1`
+- Planned stable release: `1.0.2`
 - Publication status: not published
 
-`v1.0.1` includes final publication metadata added after the `v1.0.0` tag: author/credits, GitHub repository metadata, ClawHub compatibility metadata, and the local ClawHub dry-run confirmation. It has no runtime behavior changes.
+`v1.0.2` includes the final publication metadata and checked-in build artifacts needed for ClawHub source publishing. It has no runtime behavior changes.
+
+Product naming:
+
+- CleanShot Tool: this public OpenClaw Tool Plugin and its executable tools.
+- CleanShot Skill: a future optional workflow instruction layer, not included in this repository.
 
 ## Implemented Tools
 
@@ -35,6 +40,7 @@
 - `v0.9.0`: final pre-v1.0 release audit documentation added.
 - `v1.0.0`: official CleanShot URL Scheme API comparison marked complete for the implemented scope.
 - `v1.0.1`: final publication metadata and ClawHub dry-run readiness included after the `v1.0.0` tag.
+- `v1.0.2`: build artifacts included for ClawHub source publishing.
 
 ## Current Package Verification
 
@@ -92,7 +98,7 @@ Lyzmin41
 
 Author metadata lives in `package.json`, `README.md`, and publication docs. `openclaw.plugin.json` is intentionally unchanged because local manifest references did not clearly establish author or maintainer fields for this plugin manifest shape.
 
-## v1.0.1 Go/No-Go Checklist
+## v1.0.2 Go/No-Go Checklist
 
 - [x] Build passes.
 - [x] Typecheck passes.

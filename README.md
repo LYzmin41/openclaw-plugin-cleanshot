@@ -1,14 +1,20 @@
-# CleanShot OpenClaw Plugin
+# CleanShot Tool
 
-Control CleanShot X on macOS from OpenClaw through CleanShot's official `cleanshot://` URL Scheme API.
+CleanShot Tool is an OpenClaw Tool Plugin that adds agent-callable tools for controlling CleanShot X on macOS via its official URL Scheme API.
 
-This plugin exposes focused OpenClaw tools for screenshots, OCR launch, recording launch, file annotation/pinning, Quick Access, and Settings. It does not expose arbitrary shell execution.
+It exposes focused OpenClaw tools for screenshots, OCR launch, recording launch, file annotation/pinning, Quick Access, and Settings. It does not expose arbitrary shell execution.
 
 ## Release Status
 
 - Publication status: not yet published to OpenClawHub / ClawHub.
-- Current stable local version: `v1.0.1`.
+- Current stable local version: `v1.0.2`.
 - Ready for manual Hub dry-run/publish review, but actual publication has not happened.
+
+## Tool Plugin vs Skill
+
+This repository is the universal CleanShot Tool Plugin. It provides executable tools that OpenClaw agents can call.
+
+A separate optional CleanShot Skill may be created later for personal workflows and behavioral guidance. Personal workflow guidance is intentionally not embedded into this public plugin.
 
 ## Requirements
 

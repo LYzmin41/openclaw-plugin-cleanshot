@@ -2,8 +2,8 @@
 
 ## Current Release Readiness Status
 
-- Current latest local tag: `v1.0.1`
-- Current publish candidate: `1.0.1`
+- Current latest local tag: `v1.0.2`
+- Current publish candidate: `1.0.2`
 - Package verification passed with `npm pack --dry-run`
 - Clean package install from the generated tarball passed
 - OpenClaw packaged install from the generated tarball passed locally
@@ -11,6 +11,11 @@
 - Runtime tools were discovered successfully
 - OpenClawHub / ClawHub publication status: NOT PUBLISHED
 - Author / maintainer: Lyzmin41
+
+Product naming:
+
+- CleanShot Tool: this public OpenClaw Tool Plugin and its executable tools.
+- CleanShot Skill: a future optional workflow instruction layer, not included in this repository.
 
 Verified runtime tools:
 
@@ -52,7 +57,7 @@ Repository visibility at creation time: private.
 https://github.com/LYzmin41/openclaw-plugin-cleanshot.git
 ```
 
-`main` and all tags from `v0.1.0` through `v1.0.0` were pushed successfully.
+`main` and all tags from `v0.1.0` through `v1.0.2` were pushed successfully.
 
 Package metadata now includes:
 
@@ -110,7 +115,7 @@ Dry-run summary:
 - Family: `code-plugin`
 - Name: `openclaw-plugin-cleanshot`
 - Display: `CleanShot`
-- Version: `1.0.1`
+- Version: `1.0.2`
 - Files: 25 files
 - Tags: `latest`
 - Actual publication status: NOT PUBLISHED

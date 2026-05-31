@@ -1,5 +1,17 @@
 # Changelog
 
+## Unreleased / 1.0.3
+
+- Clarified public branding as CleanShot Tool.
+- Documented the distinction between the universal Tool Plugin and future optional CleanShot Skill.
+- Updated renamed-project path references where needed.
+- No runtime behavior changes.
+
+## 1.0.2
+
+- Included build artifacts for ClawHub source publishing.
+- No runtime behavior changes.
+
 ## 1.0.1
 
 - Added final author and credits metadata for publication readiness.

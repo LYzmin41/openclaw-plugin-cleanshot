@@ -68,7 +68,7 @@ Verified installed package contents in `node_modules/openclaw-plugin-cleanshot`:
 OpenClaw local install from the tarball passed with the expected static scanner warning:
 
 ```sh
-openclaw plugins install /Users/lyzmin41/Projects/CleanShot-OCtool/openclaw-plugin-cleanshot/openclaw-plugin-cleanshot-0.6.0.tgz --dangerously-force-unsafe-install --force
+openclaw plugins install ./openclaw-plugin-cleanshot-0.6.0.tgz --dangerously-force-unsafe-install --force
 ```
 
 Expected warning:
@@ -128,4 +128,3 @@ No plugin issues detected.
 - Decide whether to keep or remove local development linked plugin configuration before public release workflows.
 - Recheck whether a future OpenClaw release provides an approved tool-plugin URL opener for custom URL schemes.
 - Perform a final OpenClawHub / ClawHub publication dry run when publication is intended.
-
