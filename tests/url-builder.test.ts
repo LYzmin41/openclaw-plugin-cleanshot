@@ -55,4 +55,45 @@ describe("buildCleanShotUrl", () => {
       /Unsupported CleanShot command/
     );
   });
+
+  it("builds all-in-one with no params", () => {
+    assert.equal(buildCleanShotUrl("all-in-one"), "cleanshot://all-in-one");
+  });
+
+  it("builds all-in-one with coordinates and display", () => {
+    assert.equal(
+      buildCleanShotUrl("all-in-one", {
+        x: 10,
+        y: 20,
+        width: 300,
+        height: 200,
+        display: 1
+      }),
+      "cleanshot://all-in-one?x=10&y=20&width=300&height=200&display=1"
+    );
+  });
+
+  it("builds scrolling capture with no params", () => {
+    assert.equal(buildCleanShotUrl("scrolling-capture"), "cleanshot://scrolling-capture");
+  });
+
+  it("builds scrolling capture with start and autoscroll", () => {
+    assert.equal(
+      buildCleanShotUrl("scrolling-capture", { start: true, autoscroll: true }),
+      "cleanshot://scrolling-capture?start=true&autoscroll=true"
+    );
+  });
+
+  it("builds scrolling capture with coordinates and display", () => {
+    assert.equal(
+      buildCleanShotUrl("scrolling-capture", {
+        x: 10,
+        y: 20,
+        width: 300,
+        height: 200,
+        display: 1
+      }),
+      "cleanshot://scrolling-capture?x=10&y=20&width=300&height=200&display=1"
+    );
+  });
 });

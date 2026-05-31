@@ -2,7 +2,7 @@
 
 Control CleanShot X on macOS through its official URL Scheme API.
 
-This MVP exposes one OpenClaw tool, `cleanshot_capture`, for launching CleanShot captures from an OpenClaw agent/runtime without manually running `open "cleanshot://..."`.
+This plugin exposes OpenClaw tools for launching CleanShot captures from an OpenClaw agent/runtime without manually running `open "cleanshot://..."`.
 
 ## Requirements
 
@@ -43,6 +43,8 @@ Expected runtime tool:
 
 ```text
 cleanshot_capture
+cleanshot_all_in_one
+cleanshot_scrolling_capture
 ```
 
 Example successful agent prompt:
@@ -61,7 +63,13 @@ open "cleanshot://capture-fullscreen?action=save"
 
 ## Current MVP Capabilities
 
-The MVP tool is `cleanshot_capture`. It supports these capture modes:
+Current tools:
+
+- `cleanshot_capture`: start a standard CleanShot capture.
+- `cleanshot_all_in_one`: launch CleanShot All-In-One mode.
+- `cleanshot_scrolling_capture`: start CleanShot scrolling capture.
+
+`cleanshot_capture` supports these capture modes:
 
 - `area`
 - `previous_area`
@@ -78,6 +86,18 @@ It can pass an optional action:
 - `pin`
 
 For area-style captures, it can also pass optional numeric `x`, `y`, `width`, `height`, and `display` parameters.
+
+`cleanshot_all_in_one` accepts optional numeric `x`, `y`, `width`, `height`, and `display` parameters.
+
+`cleanshot_scrolling_capture` accepts optional numeric `x`, `y`, `width`, `height`, and `display` parameters, plus optional boolean `start` and `autoscroll` parameters.
+
+Example prompts:
+
+```text
+Use CleanShot All-In-One mode.
+Start a CleanShot scrolling capture.
+Call cleanshot_scrolling_capture with start true and autoscroll true.
+```
 
 ## Security Model
 

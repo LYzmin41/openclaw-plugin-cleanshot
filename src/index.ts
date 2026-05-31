@@ -24,6 +24,19 @@ export interface CleanShotCaptureParams {
   display?: number;
 }
 
+export interface CleanShotRegionParams {
+  x?: number;
+  y?: number;
+  width?: number;
+  height?: number;
+  display?: number;
+}
+
+export interface CleanShotScrollingCaptureParams extends CleanShotRegionParams {
+  start?: boolean;
+  autoscroll?: boolean;
+}
+
 export interface OpenClawToolContext {
   config?: CleanShotPluginConfig;
 }
@@ -70,6 +83,28 @@ function optionalNumber(value: unknown, key: string): number | undefined {
   return value;
 }
 
+function optionalBoolean(value: unknown, key: string): boolean | undefined {
+  if (value === undefined) {
+    return undefined;
+  }
+
+  if (typeof value !== "boolean") {
+    throw new Error(`${key} must be a boolean.`);
+  }
+
+  return value;
+}
+
+function normalizeRegionParams(record: Record<string, unknown>): CleanShotRegionParams {
+  return {
+    x: optionalNumber(record.x, "x"),
+    y: optionalNumber(record.y, "y"),
+    width: optionalNumber(record.width, "width"),
+    height: optionalNumber(record.height, "height"),
+    display: optionalNumber(record.display, "display")
+  };
+}
+
 function normalizeCaptureParams(params: unknown): CleanShotCaptureParams {
   if (typeof params !== "object" || params === null) {
     throw new Error("Capture parameters must be an object.");
@@ -88,11 +123,29 @@ function normalizeCaptureParams(params: unknown): CleanShotCaptureParams {
   return {
     mode: record.mode,
     action: record.action,
-    x: optionalNumber(record.x, "x"),
-    y: optionalNumber(record.y, "y"),
-    width: optionalNumber(record.width, "width"),
-    height: optionalNumber(record.height, "height"),
-    display: optionalNumber(record.display, "display")
+    ...normalizeRegionParams(record)
+  };
+}
+
+function normalizeAllInOneParams(params: unknown): CleanShotRegionParams {
+  if (typeof params !== "object" || params === null) {
+    throw new Error("All-In-One parameters must be an object.");
+  }
+
+  return normalizeRegionParams(params as Record<string, unknown>);
+}
+
+function normalizeScrollingCaptureParams(params: unknown): CleanShotScrollingCaptureParams {
+  if (typeof params !== "object" || params === null) {
+    throw new Error("Scrolling capture parameters must be an object.");
+  }
+
+  const record = params as Record<string, unknown>;
+
+  return {
+    ...normalizeRegionParams(record),
+    start: optionalBoolean(record.start, "start"),
+    autoscroll: optionalBoolean(record.autoscroll, "autoscroll")
   };
 }
 
@@ -129,6 +182,54 @@ export async function cleanshotCapture(
   return includeUrl ? result : { ok: result.ok, launched: result.launched };
 }
 
+export async function cleanshotAllInOne(
+  params: CleanShotRegionParams,
+  context: OpenClawToolContext = {}
+) {
+  const url = buildCleanShotUrl("all-in-one", {
+    x: params.x,
+    y: params.y,
+    width: params.width,
+    height: params.height,
+    display: params.display
+  });
+  const result = await openCleanShotUrl(url);
+  const includeUrl = context.config?.includeGeneratedUrlInResult ?? true;
+
+  return includeUrl ? result : { ok: result.ok, launched: result.launched };
+}
+
+export async function cleanshotScrollingCapture(
+  params: CleanShotScrollingCaptureParams,
+  context: OpenClawToolContext = {}
+) {
+  const url = buildCleanShotUrl("scrolling-capture", {
+    x: params.x,
+    y: params.y,
+    width: params.width,
+    height: params.height,
+    display: params.display,
+    start: params.start,
+    autoscroll: params.autoscroll
+  });
+  const result = await openCleanShotUrl(url);
+  const includeUrl = context.config?.includeGeneratedUrlInResult ?? true;
+
+  return includeUrl ? result : { ok: result.ok, launched: result.launched };
+}
+
+const regionParameterSchema = {
+  type: "object",
+  additionalProperties: false,
+  properties: {
+    x: { type: "number" },
+    y: { type: "number" },
+    width: { type: "number" },
+    height: { type: "number" },
+    display: { type: "number" }
+  }
+} as const;
+
 export const plugin = {
   id: "cleanshot",
   name: "CleanShot",
@@ -163,6 +264,59 @@ export const plugin = {
             {
               type: "text",
               text: "CleanShot capture launched."
+            }
+          ],
+          details: result
+        };
+      }
+    });
+
+    api.registerTool({
+      name: "cleanshot_all_in_one",
+      label: "CleanShot All-In-One",
+      description: "Launch CleanShot All-In-One mode.",
+      parameters: regionParameterSchema,
+      async execute(_toolCallId: string, rawParams: unknown) {
+        const params = normalizeAllInOneParams(rawParams);
+        const result = await cleanshotAllInOne(params, {
+          config: getPluginConfig(api)
+        });
+
+        return {
+          content: [
+            {
+              type: "text",
+              text: "CleanShot All-In-One launched."
+            }
+          ],
+          details: result
+        };
+      }
+    });
+
+    api.registerTool({
+      name: "cleanshot_scrolling_capture",
+      label: "CleanShot Scrolling Capture",
+      description: "Start CleanShot scrolling capture.",
+      parameters: {
+        ...regionParameterSchema,
+        properties: {
+          ...regionParameterSchema.properties,
+          start: { type: "boolean" },
+          autoscroll: { type: "boolean" }
+        }
+      },
+      async execute(_toolCallId: string, rawParams: unknown) {
+        const params = normalizeScrollingCaptureParams(rawParams);
+        const result = await cleanshotScrollingCapture(params, {
+          config: getPluginConfig(api)
+        });
+
+        return {
+          content: [
+            {
+              type: "text",
+              text: "CleanShot scrolling capture launched."
             }
           ],
           details: result

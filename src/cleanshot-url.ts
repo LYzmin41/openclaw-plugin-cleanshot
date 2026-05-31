@@ -3,7 +3,9 @@ export const supportedCleanShotCommands = [
   "capture-previous-area",
   "capture-fullscreen",
   "capture-window",
-  "self-timer"
+  "self-timer",
+  "all-in-one",
+  "scrolling-capture"
 ] as const;
 
 export type CleanShotCommand = (typeof supportedCleanShotCommands)[number];

@@ -8,7 +8,9 @@
   },
   "contracts": {
     "tools": [
-      "cleanshot_capture"
+      "cleanshot_capture",
+      "cleanshot_all_in_one",
+      "cleanshot_scrolling_capture"
     ]
   },
   "configSchema": {
