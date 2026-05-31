@@ -144,4 +144,40 @@ describe("buildCleanShotUrl", () => {
       "cleanshot://record-screen?x=10&y=20&width=300&height=200&display=1"
     );
   });
+
+  it("builds open annotate with filepath", () => {
+    assert.equal(
+      buildCleanShotUrl("open-annotate", { filepath: "/tmp/example.png" }),
+      "cleanshot://open-annotate?filepath=%2Ftmp%2Fexample.png"
+    );
+  });
+
+  it("builds pin with filepath", () => {
+    assert.equal(
+      buildCleanShotUrl("pin", { filepath: "/tmp/example.png" }),
+      "cleanshot://pin?filepath=%2Ftmp%2Fexample.png"
+    );
+  });
+
+  it("builds quick access with no params", () => {
+    assert.equal(buildCleanShotUrl("quick-access"), "cleanshot://quick-access");
+  });
+
+  it("builds settings with no params", () => {
+    assert.equal(buildCleanShotUrl("settings"), "cleanshot://settings");
+  });
+
+  it("encodes filepath spaces", () => {
+    assert.equal(
+      buildCleanShotUrl("pin", { filepath: "/tmp/example image.png" }),
+      "cleanshot://pin?filepath=%2Ftmp%2Fexample+image.png"
+    );
+  });
+
+  it("skips null and undefined utility params", () => {
+    assert.equal(
+      buildCleanShotUrl("settings", { filepath: undefined, display: null }),
+      "cleanshot://settings"
+    );
+  });
 });

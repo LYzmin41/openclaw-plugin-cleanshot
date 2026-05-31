@@ -1,5 +1,13 @@
 # Changelog
 
+## Unreleased / 0.4.0
+
+- Added `cleanshot_annotate_file`
+- Added `cleanshot_pin_file`
+- Added `cleanshot_quick_access`
+- Added `cleanshot_settings`
+- Added tests for utility/file URL commands
+
 ## Unreleased / 0.3.0
 
 - Added `cleanshot_ocr`

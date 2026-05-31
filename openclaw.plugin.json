@@ -12,7 +12,11 @@
       "cleanshot_all_in_one",
       "cleanshot_scrolling_capture",
       "cleanshot_ocr",
-      "cleanshot_record_screen"
+      "cleanshot_record_screen",
+      "cleanshot_annotate_file",
+      "cleanshot_pin_file",
+      "cleanshot_quick_access",
+      "cleanshot_settings"
     ]
   },
   "configSchema": {

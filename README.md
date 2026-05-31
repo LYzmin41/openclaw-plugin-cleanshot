@@ -47,6 +47,10 @@ cleanshot_all_in_one
 cleanshot_scrolling_capture
 cleanshot_ocr
 cleanshot_record_screen
+cleanshot_annotate_file
+cleanshot_pin_file
+cleanshot_quick_access
+cleanshot_settings
 ```
 
 Example successful agent prompt:
@@ -72,6 +76,10 @@ Current tools:
 - `cleanshot_scrolling_capture`: start CleanShot scrolling capture.
 - `cleanshot_ocr`: start CleanShot OCR / text recognition from screen or image file.
 - `cleanshot_record_screen`: start CleanShot screen recording mode.
+- `cleanshot_annotate_file`: open an image file in CleanShot Annotate.
+- `cleanshot_pin_file`: pin an image file as a floating CleanShot screenshot/reference.
+- `cleanshot_quick_access`: open CleanShot Quick Access.
+- `cleanshot_settings`: open CleanShot Settings.
 
 `cleanshot_capture` supports these capture modes:
 
@@ -101,6 +109,10 @@ OCR currently triggers CleanShot OCR through the URL Scheme. It does not guarant
 
 `cleanshot_record_screen` accepts optional numeric `x`, `y`, `width`, `height`, and `display` parameters.
 
+`cleanshot_annotate_file` and `cleanshot_pin_file` require a `filepath` string. These tools pass the filepath to CleanShot via URL Scheme and do not read, modify, or otherwise operate on files themselves.
+
+`cleanshot_quick_access` and `cleanshot_settings` do not take parameters.
+
 Example prompts:
 
 ```text
@@ -111,6 +123,10 @@ Use CleanShot OCR to recognize text from the screen.
 Call cleanshot_ocr with linebreaks true.
 Start a CleanShot screen recording.
 Call cleanshot_record_screen for display 1.
+Open this file in CleanShot Annotate.
+Pin this image with CleanShot.
+Open CleanShot Quick Access.
+Open CleanShot Settings.
 ```
 
 ## Security Model

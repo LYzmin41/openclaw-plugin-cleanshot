@@ -7,7 +7,11 @@ export const supportedCleanShotCommands = [
   "all-in-one",
   "scrolling-capture",
   "capture-text",
-  "record-screen"
+  "record-screen",
+  "open-annotate",
+  "pin",
+  "quick-access",
+  "settings"
 ] as const;
 
 export type CleanShotCommand = (typeof supportedCleanShotCommands)[number];

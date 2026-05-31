@@ -42,6 +42,10 @@ export interface CleanShotOcrParams extends CleanShotRegionParams {
   linebreaks?: boolean;
 }
 
+export interface CleanShotFileParams {
+  filepath: string;
+}
+
 export interface OpenClawToolContext {
   config?: CleanShotPluginConfig;
 }
@@ -111,6 +115,22 @@ function optionalString(value: unknown, key: string): string | undefined {
 
   if (!value.trim()) {
     throw new Error(`${key} must not be empty.`);
+  }
+
+  return value;
+}
+
+export function validateFilepathParam(value: unknown): string {
+  if (typeof value !== "string") {
+    throw new Error("filepath must be a string.");
+  }
+
+  if (!value.trim()) {
+    throw new Error("filepath must not be empty.");
+  }
+
+  if (value.includes("\n") || value.includes("\r")) {
+    throw new Error("filepath must not contain newline characters.");
   }
 
   return value;
@@ -190,6 +210,18 @@ function normalizeOcrParams(params: unknown): CleanShotOcrParams {
 
 function normalizeRecordScreenParams(params: unknown): CleanShotRegionParams {
   return normalizeRegionOnlyParams(params, "Record screen");
+}
+
+function normalizeFileParams(params: unknown, label: string): CleanShotFileParams {
+  if (typeof params !== "object" || params === null) {
+    throw new Error(`${label} parameters must be an object.`);
+  }
+
+  const record = params as Record<string, unknown>;
+
+  return {
+    filepath: validateFilepathParam(record.filepath)
+  };
 }
 
 function getPluginConfig(api: OpenClawPluginApi): CleanShotPluginConfig {
@@ -294,6 +326,48 @@ export async function cleanshotRecordScreen(
   return includeUrl ? result : { ok: result.ok, launched: result.launched };
 }
 
+export async function cleanshotAnnotateFile(
+  params: CleanShotFileParams,
+  context: OpenClawToolContext = {}
+) {
+  const url = buildCleanShotUrl("open-annotate", {
+    filepath: params.filepath
+  });
+  const result = await openCleanShotUrl(url);
+  const includeUrl = context.config?.includeGeneratedUrlInResult ?? true;
+
+  return includeUrl ? result : { ok: result.ok, launched: result.launched };
+}
+
+export async function cleanshotPinFile(
+  params: CleanShotFileParams,
+  context: OpenClawToolContext = {}
+) {
+  const url = buildCleanShotUrl("pin", {
+    filepath: params.filepath
+  });
+  const result = await openCleanShotUrl(url);
+  const includeUrl = context.config?.includeGeneratedUrlInResult ?? true;
+
+  return includeUrl ? result : { ok: result.ok, launched: result.launched };
+}
+
+export async function cleanshotQuickAccess(context: OpenClawToolContext = {}) {
+  const url = buildCleanShotUrl("quick-access");
+  const result = await openCleanShotUrl(url);
+  const includeUrl = context.config?.includeGeneratedUrlInResult ?? true;
+
+  return includeUrl ? result : { ok: result.ok, launched: result.launched };
+}
+
+export async function cleanshotSettings(context: OpenClawToolContext = {}) {
+  const url = buildCleanShotUrl("settings");
+  const result = await openCleanShotUrl(url);
+  const includeUrl = context.config?.includeGeneratedUrlInResult ?? true;
+
+  return includeUrl ? result : { ok: result.ok, launched: result.launched };
+}
+
 const regionParameterSchema = {
   type: "object",
   additionalProperties: false,
@@ -304,6 +378,21 @@ const regionParameterSchema = {
     height: { type: "number" },
     display: { type: "number" }
   }
+} as const;
+
+const filepathParameterSchema = {
+  type: "object",
+  additionalProperties: false,
+  required: ["filepath"],
+  properties: {
+    filepath: { type: "string" }
+  }
+} as const;
+
+const emptyParameterSchema = {
+  type: "object",
+  additionalProperties: false,
+  properties: {}
 } as const;
 
 export const plugin = {
@@ -446,6 +535,96 @@ export const plugin = {
             {
               type: "text",
               text: "CleanShot screen recording launched."
+            }
+          ],
+          details: result
+        };
+      }
+    });
+
+    api.registerTool({
+      name: "cleanshot_annotate_file",
+      label: "CleanShot Annotate File",
+      description: "Open an image file in CleanShot Annotate.",
+      parameters: filepathParameterSchema,
+      async execute(_toolCallId: string, rawParams: unknown) {
+        const params = normalizeFileParams(rawParams, "Annotate file");
+        const result = await cleanshotAnnotateFile(params, {
+          config: getPluginConfig(api)
+        });
+
+        return {
+          content: [
+            {
+              type: "text",
+              text: "CleanShot Annotate opened."
+            }
+          ],
+          details: result
+        };
+      }
+    });
+
+    api.registerTool({
+      name: "cleanshot_pin_file",
+      label: "CleanShot Pin File",
+      description: "Pin an image file as a floating CleanShot screenshot/reference.",
+      parameters: filepathParameterSchema,
+      async execute(_toolCallId: string, rawParams: unknown) {
+        const params = normalizeFileParams(rawParams, "Pin file");
+        const result = await cleanshotPinFile(params, {
+          config: getPluginConfig(api)
+        });
+
+        return {
+          content: [
+            {
+              type: "text",
+              text: "CleanShot file pinned."
+            }
+          ],
+          details: result
+        };
+      }
+    });
+
+    api.registerTool({
+      name: "cleanshot_quick_access",
+      label: "CleanShot Quick Access",
+      description: "Open CleanShot Quick Access.",
+      parameters: emptyParameterSchema,
+      async execute() {
+        const result = await cleanshotQuickAccess({
+          config: getPluginConfig(api)
+        });
+
+        return {
+          content: [
+            {
+              type: "text",
+              text: "CleanShot Quick Access opened."
+            }
+          ],
+          details: result
+        };
+      }
+    });
+
+    api.registerTool({
+      name: "cleanshot_settings",
+      label: "CleanShot Settings",
+      description: "Open CleanShot Settings.",
+      parameters: emptyParameterSchema,
+      async execute() {
+        const result = await cleanshotSettings({
+          config: getPluginConfig(api)
+        });
+
+        return {
+          content: [
+            {
+              type: "text",
+              text: "CleanShot Settings opened."
             }
           ],
           details: result

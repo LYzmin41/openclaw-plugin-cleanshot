@@ -12,3 +12,7 @@
 - Call cleanshot_ocr with linebreaks true.
 - Start a CleanShot screen recording.
 - Call cleanshot_record_screen with x 100 y 100 width 800 and height 600.
+- Open this file in CleanShot Annotate.
+- Pin this image with CleanShot.
+- Open CleanShot Quick Access.
+- Open CleanShot Settings.
