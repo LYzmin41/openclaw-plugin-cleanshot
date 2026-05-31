@@ -2,10 +2,13 @@
 
 ## Release Candidate Status
 
-- Current version: `1.0.0`
+- Current release candidate: `1.0.1`
+- Current version: `1.0.1`
 - Next planned checkpoint: none
-- Planned stable release: `1.0.0`
+- Planned stable release: `1.0.1`
 - Publication status: not published
+
+`v1.0.1` includes final publication metadata added after the `v1.0.0` tag: author/credits, GitHub repository metadata, ClawHub compatibility metadata, and the local ClawHub dry-run confirmation. It has no runtime behavior changes.
 
 ## Implemented Tools
 
@@ -31,6 +34,7 @@
 - `v0.8.0`: OpenClawHub publication readiness docs and version metadata alignment completed.
 - `v0.9.0`: final pre-v1.0 release audit documentation added.
 - `v1.0.0`: official CleanShot URL Scheme API comparison marked complete for the implemented scope.
+- `v1.0.1`: final publication metadata and ClawHub dry-run readiness included after the `v1.0.0` tag.
 
 ## Current Package Verification
 
@@ -88,7 +92,7 @@ Lyzmin41
 
 Author metadata lives in `package.json`, `README.md`, and publication docs. `openclaw.plugin.json` is intentionally unchanged because local manifest references did not clearly establish author or maintainer fields for this plugin manifest shape.
 
-## v1.0.0 Go/No-Go Checklist
+## v1.0.1 Go/No-Go Checklist
 
 - [x] Build passes.
 - [x] Typecheck passes.
@@ -104,4 +108,5 @@ Author metadata lives in `package.json`, `README.md`, and publication docs. `ope
 - [x] Repository URL set.
 - [x] Author / maintainer metadata set.
 - [x] ClawHub dry run succeeds.
+- [ ] Actual publication completed.
 - [ ] Manual approval granted.

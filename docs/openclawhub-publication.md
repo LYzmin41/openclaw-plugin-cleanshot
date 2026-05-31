@@ -2,7 +2,8 @@
 
 ## Current Release Readiness Status
 
-- Current latest local tag: `v1.0.0`
+- Current latest local tag: `v1.0.1`
+- Current publish candidate: `1.0.1`
 - Package verification passed with `npm pack --dry-run`
 - Clean package install from the generated tarball passed
 - OpenClaw packaged install from the generated tarball passed locally
@@ -109,10 +110,18 @@ Dry-run summary:
 - Family: `code-plugin`
 - Name: `openclaw-plugin-cleanshot`
 - Display: `CleanShot`
-- Version: `1.0.0`
+- Version: `1.0.1`
 - Files: 25 files
 - Tags: `latest`
 - Actual publication status: NOT PUBLISHED
+
+The final manual publish command is documented here but has not been executed:
+
+```sh
+npx clawhub package publish . --family code-plugin
+```
+
+Do not run this command until manual approval is granted.
 
 ## Security Warning Disclosure
 

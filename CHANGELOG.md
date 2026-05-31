@@ -1,13 +1,12 @@
 # Changelog
 
-## Unreleased / 1.0.1
+## 1.0.1
 
-- Added GitHub repository metadata for publication readiness.
-- Updated publication documentation with GitHub repository status.
-- Added author and credits metadata for publication readiness.
-- Added local ClawHub CLI dev dependency for publication dry-run readiness.
-- Added OpenClaw compatibility metadata required by ClawHub code-plugin dry runs.
-- Confirmed local ClawHub code-plugin dry run succeeds without publishing.
+- Added final author and credits metadata for publication readiness.
+- Added GitHub repository metadata.
+- Added ClawHub compatibility metadata.
+- Verified ClawHub dry-run publishing with `npx clawhub package publish . --family code-plugin --dry-run`.
+- No runtime behavior changes.
 
 ## 1.0.0
 

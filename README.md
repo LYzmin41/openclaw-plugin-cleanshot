@@ -7,7 +7,7 @@ This plugin exposes focused OpenClaw tools for screenshots, OCR launch, recordin
 ## Release Status
 
 - Publication status: not yet published to OpenClawHub / ClawHub.
-- Current stable local version: `v1.0.0`.
+- Current stable local version: `v1.0.1`.
 - Ready for manual Hub dry-run/publish review, but actual publication has not happened.
 
 ## Requirements
