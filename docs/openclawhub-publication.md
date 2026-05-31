@@ -34,6 +34,39 @@ Verified runtime tools:
 - Confirm child_process warning strategy.
 - Confirm ClawHub / OpenClawHub submission format.
 
+## GitHub Repository Status
+
+Publication metadata still needs a GitHub repository URL.
+
+During the post-v1.0.0 readiness check, `gh` was available and authenticated as `LYzmin41`, but repository creation failed before completion:
+
+```text
+Post "https://api.github.com/graphql": EOF
+```
+
+No `origin` remote was added and no code or tags were pushed.
+
+Manual commands to retry later:
+
+```sh
+gh repo create openclaw-plugin-cleanshot --private --source=. --remote=origin
+git push -u origin main
+git push origin --tags
+```
+
+After the remote exists, add package metadata using the actual remote owner and URL:
+
+```json
+"repository": {
+  "type": "git",
+  "url": "git+https://github.com/<owner>/openclaw-plugin-cleanshot.git"
+},
+"bugs": {
+  "url": "https://github.com/<owner>/openclaw-plugin-cleanshot/issues"
+},
+"homepage": "https://github.com/<owner>/openclaw-plugin-cleanshot#readme"
+```
+
 ## Expected Publication Command
 
 Project-owner review of ClawHub publication docs confirmed this command shape:
@@ -52,7 +85,7 @@ clawhub package publish . --family code-plugin
 
 Do not run the actual publish command until manual approval.
 
-The `clawhub` CLI was not available on PATH during the v0.8/v0.9/v1.0 local checks, so the dry run has not been executed locally yet.
+The `clawhub` CLI was not available on PATH during the v0.8/v0.9/v1.0 local checks or the post-v1.0.0 readiness check, so the dry run has not been executed locally yet.
 
 ## Security Warning Disclosure
 

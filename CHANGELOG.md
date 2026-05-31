@@ -1,5 +1,10 @@
 # Changelog
 
+## Unreleased / 1.0.1
+
+- Documented GitHub repository creation blocker for publication readiness.
+- Documented that ClawHub CLI is not currently available on PATH for local dry-run publishing.
+
 ## 1.0.0
 
 - First stable local release candidate of the CleanShot OpenClaw plugin.
