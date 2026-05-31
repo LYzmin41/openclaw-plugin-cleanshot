@@ -1,3 +1,4 @@
+import { type GetDisplaysOptions } from "./displays.js";
 import { type CaptureAction, type CaptureMode } from "./schemas.js";
 export interface CleanShotPluginConfig {
     defaultAction?: CaptureAction;
@@ -29,6 +30,8 @@ export interface CleanShotOcrParams extends CleanShotRegionParams {
 }
 export interface CleanShotFileParams {
     filepath: string;
+}
+export interface CleanShotGetDisplaysParams extends GetDisplaysOptions {
 }
 export interface OpenClawToolContext {
     config?: CleanShotPluginConfig;
@@ -86,6 +89,7 @@ export declare function cleanshotSettings(context?: OpenClawToolContext): Promis
     ok: true;
     launched: true;
 }>;
+export declare function cleanshotGetDisplays(params?: CleanShotGetDisplaysParams): Promise<import("./displays.js").GetDisplaysResult>;
 export declare const plugin: {
     readonly id: "cleanshot";
     readonly name: "CleanShot";

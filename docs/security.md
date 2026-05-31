@@ -44,6 +44,16 @@ Filepath validation rejects:
 - empty strings
 - newline or carriage return characters
 
+## Display Geometry Helper
+
+`cleanshot_get_displays` uses Node `execFile` to call macOS `osascript` with a fixed JavaScript for Automation script:
+
+```ts
+execFile("osascript", ["-l", "JavaScript", "-e", script])
+```
+
+The script queries AppKit `NSScreen` display geometry. It does not include user-provided command text, does not use shell interpolation, does not capture the screen, and does not read or modify files. It only returns local display bounds, visible frames, scale values, and derived pixel bounds when available.
+
 ## Known Security-Relevant Limitations
 
 - The `upload` action depends on CleanShot Cloud settings and user configuration.

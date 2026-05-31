@@ -1,4 +1,5 @@
 import { buildCleanShotUrl } from "./cleanshot-url.js";
+import { getDisplays } from "./displays.js";
 import { openCleanShotUrl } from "./launcher.js";
 import { captureActionSchema, captureActions, captureModeSchema, captureModes } from "./schemas.js";
 const commandByMode = {
@@ -125,6 +126,19 @@ function normalizeFileParams(params, label) {
         filepath: validateFilepathParam(record.filepath)
     };
 }
+function normalizeGetDisplaysParams(params) {
+    if (params === undefined || params === null) {
+        return {};
+    }
+    if (typeof params !== "object") {
+        throw new Error("Get displays parameters must be an object.");
+    }
+    const record = params;
+    return {
+        includeVisibleFrame: optionalBoolean(record.includeVisibleFrame, "includeVisibleFrame"),
+        includePixelBounds: optionalBoolean(record.includePixelBounds, "includePixelBounds")
+    };
+}
 function getPluginConfig(api) {
     const config = api.pluginConfig ?? {};
     return {
@@ -229,6 +243,9 @@ export async function cleanshotSettings(context = {}) {
     const includeUrl = context.config?.includeGeneratedUrlInResult ?? true;
     return includeUrl ? result : { ok: result.ok, launched: result.launched };
 }
+export async function cleanshotGetDisplays(params = {}) {
+    return getDisplays(params);
+}
 const regionParameterSchema = {
     type: "object",
     additionalProperties: false,
@@ -252,6 +269,14 @@ const emptyParameterSchema = {
     type: "object",
     additionalProperties: false,
     properties: {}
+};
+const getDisplaysParameterSchema = {
+    type: "object",
+    additionalProperties: false,
+    properties: {
+        includeVisibleFrame: { type: "boolean" },
+        includePixelBounds: { type: "boolean" }
+    }
 };
 export const plugin = {
     id: "cleanshot",
@@ -466,6 +491,25 @@ export const plugin = {
                         {
                             type: "text",
                             text: "CleanShot Settings opened."
+                        }
+                    ],
+                    details: result
+                };
+            }
+        });
+        api.registerTool({
+            name: "cleanshot_get_displays",
+            label: "CleanShot Get Displays",
+            description: "Get macOS display geometry for coordinate-based CleanShot captures.",
+            parameters: getDisplaysParameterSchema,
+            async execute(_toolCallId, rawParams) {
+                const params = normalizeGetDisplaysParams(rawParams);
+                const result = await cleanshotGetDisplays(params);
+                return {
+                    content: [
+                        {
+                            type: "text",
+                            text: "macOS display geometry returned."
                         }
                     ],
                     details: result

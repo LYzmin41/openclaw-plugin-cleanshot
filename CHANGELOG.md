@@ -1,11 +1,14 @@
 # Changelog
 
-## Unreleased / 1.0.3
+## 1.1.0
 
+- Added `cleanshot_get_displays` utility tool for macOS display geometry.
+- Added tests for display geometry parsing and normalization.
+- Added documentation for coordinate-based capture support.
+- No changes to existing CleanShot capture behavior.
 - Clarified public branding as CleanShot Tool.
 - Documented the distinction between the universal Tool Plugin and future optional CleanShot Skill.
 - Updated renamed-project path references where needed.
-- No runtime behavior changes.
 
 ## 1.0.2
 

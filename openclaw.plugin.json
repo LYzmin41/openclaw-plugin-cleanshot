@@ -1,7 +1,7 @@
 {
   "id": "cleanshot",
   "name": "CleanShot Tool",
-  "version": "1.0.2",
+  "version": "1.1.0",
   "description": "Control CleanShot X on macOS via its official URL Scheme API.",
   "activation": {
     "onStartup": false
@@ -16,7 +16,8 @@
       "cleanshot_annotate_file",
       "cleanshot_pin_file",
       "cleanshot_quick_access",
-      "cleanshot_settings"
+      "cleanshot_settings",
+      "cleanshot_get_displays"
     ]
   },
   "configSchema": {

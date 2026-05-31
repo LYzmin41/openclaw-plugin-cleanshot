@@ -13,3 +13,5 @@
 - Call cleanshot_pin_file with filepath /tmp/example.png.
 - Call cleanshot_quick_access.
 - Call cleanshot_settings.
+- Call cleanshot_get_displays to inspect display bounds.
+- Use display bounds to calculate an area capture.

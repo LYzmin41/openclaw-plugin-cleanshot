@@ -7,7 +7,7 @@ It exposes focused OpenClaw tools for screenshots, OCR launch, recording launch,
 ## Release Status
 
 - Publication status: not yet published to OpenClawHub / ClawHub.
-- Current stable local version: `v1.0.2`.
+- Current stable local version: `v1.1.0`.
 - Ready for manual Hub dry-run/publish review, but actual publication has not happened.
 
 ## Tool Plugin vs Skill
@@ -68,6 +68,7 @@ cleanshot_annotate_file
 cleanshot_pin_file
 cleanshot_quick_access
 cleanshot_settings
+cleanshot_get_displays
 ```
 
 ## Tools
@@ -83,6 +84,9 @@ cleanshot_settings
 | `cleanshot_pin_file` | Pin an image file as a floating CleanShot screenshot/reference. |
 | `cleanshot_quick_access` | Open CleanShot Quick Access. |
 | `cleanshot_settings` | Open CleanShot Settings. |
+| `cleanshot_get_displays` | Returns macOS display geometry for coordinate-based CleanShot captures. |
+
+`cleanshot_get_displays` is a plugin utility tool. It does not call CleanShot and is not a CleanShot URL Scheme command.
 
 Neutral tool-call examples:
 
@@ -96,6 +100,8 @@ Call cleanshot_annotate_file with filepath /tmp/example.png.
 Call cleanshot_pin_file with filepath /tmp/example.png.
 Call cleanshot_quick_access.
 Call cleanshot_settings.
+Call cleanshot_get_displays to inspect display bounds.
+Use display bounds to calculate an area capture.
 ```
 
 ## Security Note

@@ -32,6 +32,14 @@ Compared against the official CleanShot URL Scheme API docs before v1.0.0 based 
 | `quick-access` | `cleanshot_quick_access` | none | No params test | Yes, v0.4.0 | Opens CleanShot Quick Access. |
 | `settings` | `cleanshot_settings` | none | No params test; null and undefined skipping test | Yes, v0.4.0 | Opens CleanShot Settings. |
 
+## Plugin Utility Tools
+
+These tools are part of CleanShot Tool, but they are not CleanShot URL Scheme API commands.
+
+| Plugin utility tool | Purpose | Test coverage | Notes / limitations |
+| --- | --- | --- | --- |
+| `cleanshot_get_displays` | macOS display geometry helper for coordinate-based captures. | Display JSON parsing, validation, main-display sorting, visible frame options, and pixel-bound derivation tests. | Returns macOS logical display coordinates as the primary bounds. Pixel bounds are provided separately when scale is available. Does not call CleanShot. |
+
 ## Potential Missing CleanShot API Surface
 
 This section should not be treated as a list of known missing features. It is retained as a checklist for future comparisons against the official CleanShot URL Scheme API documentation.
