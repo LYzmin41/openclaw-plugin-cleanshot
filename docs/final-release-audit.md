@@ -71,13 +71,16 @@ The package dry run excludes local-only files:
 
 ## Remaining Blockers Before OpenClawHub Publication
 
-- GitHub repository URL is not set yet.
-- GitHub repository creation via `gh` failed during post-v1.0.0 readiness with a GitHub API EOF; no remote was added and nothing was pushed.
 - ClawHub CLI is not available locally unless installed after this audit.
 - ClawHub dry-run publish still needs to be run when the CLI is available.
 - Public `child_process` disclosure strategy must be accepted before actual Hub publish.
 - Actual publication requires manual approval.
-- Add the `repository` field to `package.json` once the GitHub repo exists.
+
+GitHub repository URL is configured:
+
+```text
+https://github.com/LYzmin41/openclaw-plugin-cleanshot
+```
 
 ## v1.0.0 Go/No-Go Checklist
 
@@ -92,6 +95,6 @@ The package dry run excludes local-only files:
 - [ ] Security docs reviewed.
 - [ ] README reviewed.
 - [x] Official CleanShot docs compared.
-- [ ] Repository URL set.
+- [x] Repository URL set.
 - [ ] ClawHub dry run succeeds.
 - [ ] Manual approval granted.

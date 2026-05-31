@@ -36,35 +36,33 @@ Verified runtime tools:
 
 ## GitHub Repository Status
 
-Publication metadata still needs a GitHub repository URL.
-
-During the post-v1.0.0 readiness check, `gh` was available and authenticated as `LYzmin41`, but repository creation failed before completion:
+GitHub repository URL is configured:
 
 ```text
-Post "https://api.github.com/graphql": EOF
+https://github.com/LYzmin41/openclaw-plugin-cleanshot
 ```
 
-No `origin` remote was added and no code or tags were pushed.
+Repository visibility at creation time: private.
 
-Manual commands to retry later:
+`origin` is configured as:
 
-```sh
-gh repo create openclaw-plugin-cleanshot --private --source=. --remote=origin
-git push -u origin main
-git push origin --tags
+```text
+https://github.com/LYzmin41/openclaw-plugin-cleanshot.git
 ```
 
-After the remote exists, add package metadata using the actual remote owner and URL:
+`main` and all tags from `v0.1.0` through `v1.0.0` were pushed successfully.
+
+Package metadata now includes:
 
 ```json
 "repository": {
   "type": "git",
-  "url": "git+https://github.com/<owner>/openclaw-plugin-cleanshot.git"
+  "url": "git+https://github.com/LYzmin41/openclaw-plugin-cleanshot.git"
 },
 "bugs": {
-  "url": "https://github.com/<owner>/openclaw-plugin-cleanshot/issues"
+  "url": "https://github.com/LYzmin41/openclaw-plugin-cleanshot/issues"
 },
-"homepage": "https://github.com/<owner>/openclaw-plugin-cleanshot#readme"
+"homepage": "https://github.com/LYzmin41/openclaw-plugin-cleanshot#readme"
 ```
 
 ## Expected Publication Command
@@ -97,7 +95,6 @@ OpenClaw static scanning may still flag the package because it imports Node `chi
 
 ## Known Blockers
 
-- A GitHub repository / repository URL is not configured yet.
 - ClawHub CLI is not available locally.
 - ClawHub dry run has not been executed locally.
 - Hub reviewer handling for the expected `child_process` static scanner warning needs a decision.
