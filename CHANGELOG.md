@@ -1,5 +1,12 @@
 # Changelog
 
+## Unreleased / 0.8.0
+
+- Added OpenClawHub publication readiness documentation.
+- Audited package/plugin version metadata for release readiness.
+- Improved public-facing README publication status and documentation links.
+- Aligned package and plugin manifest versions for the v0.8.0 release-readiness checkpoint.
+
 ## Unreleased / 0.7.0
 
 - Added release candidate verification notes.

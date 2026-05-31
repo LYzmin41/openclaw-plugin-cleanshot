@@ -4,6 +4,12 @@ Control CleanShot X on macOS from OpenClaw through CleanShot's official `cleansh
 
 This plugin exposes focused OpenClaw tools for screenshots, OCR launch, recording launch, file annotation/pinning, Quick Access, and Settings. It does not expose arbitrary shell execution.
 
+## Release Status
+
+- Publication status: not yet published to OpenClawHub / ClawHub.
+- Current latest local tag: `v0.8.0`.
+- Current release-readiness checkpoint version: `0.8.0`.
+
 ## Requirements
 
 - macOS
@@ -60,15 +66,17 @@ cleanshot_settings
 
 ## Tools
 
-- `cleanshot_capture`: start a standard CleanShot capture.
-- `cleanshot_all_in_one`: launch CleanShot All-In-One mode.
-- `cleanshot_scrolling_capture`: start CleanShot scrolling capture.
-- `cleanshot_ocr`: trigger CleanShot OCR / text recognition from screen or image file.
-- `cleanshot_record_screen`: start CleanShot screen recording mode.
-- `cleanshot_annotate_file`: open an image file in CleanShot Annotate.
-- `cleanshot_pin_file`: pin an image file as a floating CleanShot screenshot/reference.
-- `cleanshot_quick_access`: open CleanShot Quick Access.
-- `cleanshot_settings`: open CleanShot Settings.
+| Tool | Summary |
+| --- | --- |
+| `cleanshot_capture` | Start a standard CleanShot capture. |
+| `cleanshot_all_in_one` | Launch CleanShot All-In-One mode. |
+| `cleanshot_scrolling_capture` | Start CleanShot scrolling capture. |
+| `cleanshot_ocr` | Trigger CleanShot OCR / text recognition from screen or image file. |
+| `cleanshot_record_screen` | Start CleanShot screen recording mode. |
+| `cleanshot_annotate_file` | Open an image file in CleanShot Annotate. |
+| `cleanshot_pin_file` | Pin an image file as a floating CleanShot screenshot/reference. |
+| `cleanshot_quick_access` | Open CleanShot Quick Access. |
+| `cleanshot_settings` | Open CleanShot Settings. |
 
 Example prompts:
 
@@ -103,6 +111,7 @@ File tools pass filepaths to CleanShot via URL Scheme. They do not read, stat, m
 - [Troubleshooting](docs/troubleshooting.md)
 - [Release Checklist](docs/release-checklist.md)
 - [Release Candidate Notes](docs/release-candidate-notes.md)
+- [OpenClawHub Publication Readiness](docs/openclawhub-publication.md)
 
 ## Development
 
