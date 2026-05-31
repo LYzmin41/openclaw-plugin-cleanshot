@@ -102,6 +102,7 @@ File tools pass filepaths to CleanShot via URL Scheme. They do not read, stat, m
 - [Security Model](docs/security.md)
 - [Troubleshooting](docs/troubleshooting.md)
 - [Release Checklist](docs/release-checklist.md)
+- [Release Candidate Notes](docs/release-candidate-notes.md)
 
 ## Development
 

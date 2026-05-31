@@ -1,5 +1,12 @@
 # Changelog
 
+## Unreleased / 0.7.0
+
+- Added release candidate verification notes.
+- Verified npm package contents with npm pack.
+- Verified clean local package install.
+- Verified OpenClaw runtime loading from packaged artifact.
+
 ## Unreleased / 0.6.0
 
 - Added release checklist documentation.
