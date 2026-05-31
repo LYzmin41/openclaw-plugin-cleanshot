@@ -9,6 +9,7 @@
 - Runtime loading from the packaged artifact was verified
 - Runtime tools were discovered successfully
 - OpenClawHub / ClawHub publication status: NOT PUBLISHED
+- Author / maintainer: Lyzmin41
 
 Verified runtime tools:
 
@@ -65,6 +66,17 @@ Package metadata now includes:
 "homepage": "https://github.com/LYzmin41/openclaw-plugin-cleanshot#readme"
 ```
 
+## Publication Metadata
+
+- Author / maintainer: Lyzmin41
+- Repository: `https://github.com/LYzmin41/openclaw-plugin-cleanshot`
+- Publication status: NOT PUBLISHED
+- OpenClaw compatibility metadata:
+  - `openclaw.compat.pluginApi`: `>=2026.5.12`
+  - `openclaw.build.openclawVersion`: `2026.5.12`
+
+Author metadata lives in `package.json`, `README.md`, this publication readiness document, and the Hub listing. `openclaw.plugin.json` is intentionally unchanged because local manifest references did not clearly establish author or maintainer fields for this plugin manifest shape.
+
 ## Expected Publication Command
 
 Project-owner review of ClawHub publication docs confirmed this command shape:
@@ -83,7 +95,24 @@ clawhub package publish . --family code-plugin
 
 Do not run the actual publish command until manual approval.
 
-The `clawhub` CLI was not available on PATH during the v0.8/v0.9/v1.0 local checks or the post-v1.0.0 readiness check, so the dry run has not been executed locally yet.
+The `clawhub` CLI was not available on PATH during earlier v0.8/v0.9/v1.0 checks. For publication readiness, `clawhub@0.18.0` was installed locally as a dev dependency and invoked through `npx`.
+
+Local dry run succeeded:
+
+```sh
+npx clawhub package publish . --family code-plugin --dry-run
+```
+
+Dry-run summary:
+
+- Source: `github:LYzmin41/openclaw-plugin-cleanshot@main`
+- Family: `code-plugin`
+- Name: `openclaw-plugin-cleanshot`
+- Display: `CleanShot`
+- Version: `1.0.0`
+- Files: 25 files
+- Tags: `latest`
+- Actual publication status: NOT PUBLISHED
 
 ## Security Warning Disclosure
 
@@ -95,9 +124,8 @@ OpenClaw static scanning may still flag the package because it imports Node `chi
 
 ## Known Blockers
 
-- ClawHub CLI is not available locally.
-- ClawHub dry run has not been executed locally.
 - Hub reviewer handling for the expected `child_process` static scanner warning needs a decision.
+- Actual publication requires manual approval.
 
 ## Final Publish Checklist
 

@@ -114,6 +114,10 @@ File tools pass filepaths to CleanShot via URL Scheme. They do not read, stat, m
 - [OpenClawHub Publication Readiness](docs/openclawhub-publication.md)
 - [Final Release Audit](docs/final-release-audit.md)
 
+## Author
+
+Created and maintained by Lyzmin41.
+
 ## Development
 
 ```sh

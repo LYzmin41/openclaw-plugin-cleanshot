@@ -4,7 +4,10 @@
 
 - Added GitHub repository metadata for publication readiness.
 - Updated publication documentation with GitHub repository status.
-- Documented that ClawHub CLI is not currently available on PATH for local dry-run publishing.
+- Added author and credits metadata for publication readiness.
+- Added local ClawHub CLI dev dependency for publication dry-run readiness.
+- Added OpenClaw compatibility metadata required by ClawHub code-plugin dry runs.
+- Confirmed local ClawHub code-plugin dry run succeeds without publishing.
 
 ## 1.0.0
 

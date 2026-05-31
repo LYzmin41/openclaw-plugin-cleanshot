@@ -71,8 +71,6 @@ The package dry run excludes local-only files:
 
 ## Remaining Blockers Before OpenClawHub Publication
 
-- ClawHub CLI is not available locally unless installed after this audit.
-- ClawHub dry-run publish still needs to be run when the CLI is available.
 - Public `child_process` disclosure strategy must be accepted before actual Hub publish.
 - Actual publication requires manual approval.
 
@@ -81,6 +79,14 @@ GitHub repository URL is configured:
 ```text
 https://github.com/LYzmin41/openclaw-plugin-cleanshot
 ```
+
+Author / maintainer metadata is configured:
+
+```text
+Lyzmin41
+```
+
+Author metadata lives in `package.json`, `README.md`, and publication docs. `openclaw.plugin.json` is intentionally unchanged because local manifest references did not clearly establish author or maintainer fields for this plugin manifest shape.
 
 ## v1.0.0 Go/No-Go Checklist
 
@@ -96,5 +102,6 @@ https://github.com/LYzmin41/openclaw-plugin-cleanshot
 - [ ] README reviewed.
 - [x] Official CleanShot docs compared.
 - [x] Repository URL set.
-- [ ] ClawHub dry run succeeds.
+- [x] Author / maintainer metadata set.
+- [x] ClawHub dry run succeeds.
 - [ ] Manual approval granted.
