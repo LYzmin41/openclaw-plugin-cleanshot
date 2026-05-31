@@ -1,5 +1,11 @@
 # Changelog
 
+## Unreleased / 0.9.0
+
+- Added final pre-v1.0 release audit documentation.
+- Added v1.0.0 go/no-go checklist.
+- Updated package and plugin manifest versions to 0.9.0.
+
 ## Unreleased / 0.8.0
 
 - Added OpenClawHub publication readiness documentation.

@@ -7,8 +7,8 @@ This plugin exposes focused OpenClaw tools for screenshots, OCR launch, recordin
 ## Release Status
 
 - Publication status: not yet published to OpenClawHub / ClawHub.
-- Current latest local tag: `v0.8.0`.
-- Current release-readiness checkpoint version: `0.8.0`.
+- Current latest local checkpoint: `v0.9.0`.
+- Current release-readiness checkpoint version: `0.9.0`.
 
 ## Requirements
 
@@ -112,6 +112,7 @@ File tools pass filepaths to CleanShot via URL Scheme. They do not read, stat, m
 - [Release Checklist](docs/release-checklist.md)
 - [Release Candidate Notes](docs/release-candidate-notes.md)
 - [OpenClawHub Publication Readiness](docs/openclawhub-publication.md)
+- [Final Release Audit](docs/final-release-audit.md)
 
 ## Development
 
