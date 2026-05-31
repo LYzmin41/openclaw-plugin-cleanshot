@@ -1,18 +1,15 @@
-# Example Prompts
+# Tool Call Examples
 
-- Use CleanShot to capture the fullscreen and save it.
 - Call cleanshot_capture with mode fullscreen and action save.
-- Take a CleanShot screenshot of a selected area and open it in annotate.
-- Repeat the previous CleanShot area and copy it to clipboard.
-- Capture a window with CleanShot and pin it.
-- Use CleanShot All-In-One mode.
-- Start a CleanShot scrolling capture.
+- Call cleanshot_capture with mode area and action annotate.
+- Call cleanshot_capture with mode previous_area and action copy.
+- Call cleanshot_capture with mode window and action pin.
+- Call cleanshot_all_in_one.
+- Call cleanshot_scrolling_capture.
 - Call cleanshot_scrolling_capture with start true and autoscroll true.
-- Use CleanShot OCR to recognize text from the screen.
 - Call cleanshot_ocr with linebreaks true.
-- Start a CleanShot screen recording.
 - Call cleanshot_record_screen with x 100 y 100 width 800 and height 600.
-- Open this file in CleanShot Annotate.
-- Pin this image with CleanShot.
-- Open CleanShot Quick Access.
-- Open CleanShot Settings.
+- Call cleanshot_annotate_file with filepath /tmp/example.png.
+- Call cleanshot_pin_file with filepath /tmp/example.png.
+- Call cleanshot_quick_access.
+- Call cleanshot_settings.

@@ -15,7 +15,7 @@
 Product naming:
 
 - CleanShot Tool: this public OpenClaw Tool Plugin and its executable tools.
-- CleanShot Skill: a future optional workflow instruction layer, not included in this repository.
+- CleanShot Skill: a separate optional workflow instruction layer, not included in this repository.
 
 Verified runtime tools:
 

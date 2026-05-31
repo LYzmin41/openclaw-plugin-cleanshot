@@ -14,7 +14,7 @@ It exposes focused OpenClaw tools for screenshots, OCR launch, recording launch,
 
 This repository is the universal CleanShot Tool Plugin. It provides executable tools that OpenClaw agents can call.
 
-A separate optional CleanShot Skill may be created later for personal workflows and behavioral guidance. Personal workflow guidance is intentionally not embedded into this public plugin.
+A separate optional CleanShot Skill can provide workflow and decision guidance outside this repository. This public plugin intentionally stays focused on executable tools, parameters, URL Scheme behavior, and safety documentation.
 
 ## Requirements
 
@@ -84,18 +84,18 @@ cleanshot_settings
 | `cleanshot_quick_access` | Open CleanShot Quick Access. |
 | `cleanshot_settings` | Open CleanShot Settings. |
 
-Example prompts:
+Neutral tool-call examples:
 
 ```text
-Use CleanShot to capture the fullscreen and save it.
-Use CleanShot All-In-One mode.
-Start a CleanShot scrolling capture.
+Call cleanshot_capture with mode fullscreen and action save.
+Call cleanshot_all_in_one.
+Call cleanshot_scrolling_capture.
 Call cleanshot_ocr with linebreaks true.
-Start a CleanShot screen recording.
-Open this file in CleanShot Annotate.
-Pin this image with CleanShot.
-Open CleanShot Quick Access.
-Open CleanShot Settings.
+Call cleanshot_record_screen.
+Call cleanshot_annotate_file with filepath /tmp/example.png.
+Call cleanshot_pin_file with filepath /tmp/example.png.
+Call cleanshot_quick_access.
+Call cleanshot_settings.
 ```
 
 ## Security Note

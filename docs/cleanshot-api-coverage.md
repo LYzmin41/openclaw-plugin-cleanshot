@@ -2,7 +2,7 @@
 
 This document maps the CleanShot URL Scheme commands currently implemented by CleanShot Tool to plugin tools, parameters, tests, and agent smoke verification.
 
-CleanShot Tool is the public OpenClaw Tool Plugin. A separate optional CleanShot Skill may be created later for workflow guidance, but that skill layer is not included here.
+CleanShot Tool is the public OpenClaw Tool Plugin. A separate optional CleanShot Skill can provide workflow guidance outside this repository, but that skill layer is not included here.
 
 This is an implementation audit for the current plugin state.
 

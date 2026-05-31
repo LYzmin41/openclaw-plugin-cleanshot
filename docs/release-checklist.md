@@ -47,12 +47,12 @@ Required runtime tools:
 - `cleanshot_quick_access`
 - `cleanshot_settings`
 
-## Agent Smoke Tests
+## Runtime Smoke Tests
 
-Use agent prompts like:
+Use direct tool-call prompts or equivalent runtime calls:
 
-- "Use CleanShot to capture the fullscreen and save it."
-- "Use CleanShot All-In-One mode."
+- "Call the tool cleanshot_capture with mode fullscreen and action save."
+- "Call the tool cleanshot_all_in_one."
 - "Call the tool cleanshot_scrolling_capture with start false."
 - "Call the tool cleanshot_ocr with linebreaks true."
 - "Call the tool cleanshot_record_screen."
