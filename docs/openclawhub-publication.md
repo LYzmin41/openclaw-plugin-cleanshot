@@ -2,7 +2,7 @@
 
 ## Current Release Readiness Status
 
-- Current latest local tag: `v0.7.0`
+- Current latest local tag: `v1.0.0`
 - Package verification passed with `npm pack --dry-run`
 - Clean package install from the generated tarball passed
 - OpenClaw packaged install from the generated tarball passed locally
@@ -36,16 +36,23 @@ Verified runtime tools:
 
 ## Expected Publication Command
 
-The `clawhub` CLI was not available on PATH during this readiness audit, and `openclaw docs clawhub` did not return usable documentation. Treat the publication command as a TODO until confirmed from official OpenClawHub / ClawHub docs.
+Project-owner review of ClawHub publication docs confirmed this command shape:
 
-Tentative shape to confirm:
+Dry run:
 
 ```sh
 clawhub package publish . --family code-plugin --dry-run
+```
+
+Actual publish:
+
+```sh
 clawhub package publish . --family code-plugin
 ```
 
-Do not run the actual publish command until the dry run, review, and manual approval are complete.
+Do not run the actual publish command until manual approval.
+
+The `clawhub` CLI was not available on PATH during the v0.8/v0.9/v1.0 local checks, so the dry run has not been executed locally yet.
 
 ## Security Warning Disclosure
 
@@ -57,10 +64,9 @@ OpenClaw static scanning may still flag the package because it imports Node `chi
 
 ## Known Blockers
 
-- No GitHub repository / repository URL is configured yet.
-- A final `v1.0.0` tag has not been created.
-- Final API comparison against the official CleanShot URL Scheme docs is still required.
-- ClawHub dry-run command and submission format have not been confirmed.
+- A GitHub repository / repository URL is not configured yet.
+- ClawHub CLI is not available locally.
+- ClawHub dry run has not been executed locally.
 - Hub reviewer handling for the expected `child_process` static scanner warning needs a decision.
 
 ## Final Publish Checklist
@@ -74,7 +80,6 @@ OpenClaw static scanning may still flag the package because it imports Node `chi
 - Install the tarball into OpenClaw locally.
 - Run `openclaw plugins inspect cleanshot --runtime`.
 - Run `openclaw plugins doctor`.
-- Confirm the ClawHub dry-run command.
-- Run the ClawHub dry run, for example `clawhub package publish . --family code-plugin --dry-run`, only after the command is confirmed.
+- Run the ClawHub dry run: `clawhub package publish . --family code-plugin --dry-run`.
 - Get manual approval.
 - Run the actual publish command only after manual approval.

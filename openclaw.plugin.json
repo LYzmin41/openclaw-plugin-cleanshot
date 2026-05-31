@@ -1,7 +1,7 @@
 {
   "id": "cleanshot",
   "name": "CleanShot",
-  "version": "0.9.0",
+  "version": "1.0.0",
   "description": "Control CleanShot X on macOS via its official URL Scheme API.",
   "activation": {
     "onStartup": false

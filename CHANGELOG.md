@@ -1,5 +1,23 @@
 # Changelog
 
+## 1.0.0
+
+- First stable local release candidate of the CleanShot OpenClaw plugin.
+- Includes nine CleanShot tools:
+  - `cleanshot_capture`
+  - `cleanshot_all_in_one`
+  - `cleanshot_scrolling_capture`
+  - `cleanshot_ocr`
+  - `cleanshot_record_screen`
+  - `cleanshot_annotate_file`
+  - `cleanshot_pin_file`
+  - `cleanshot_quick_access`
+  - `cleanshot_settings`
+- Confirmed official CleanShot URL Scheme API coverage for the implemented scope.
+- Confirmed package build, typecheck, tests, and npm package dry-run.
+- Prepared documentation for security, troubleshooting, release checklist, API coverage, release candidate notes, and OpenClawHub publication readiness.
+- Publication to OpenClawHub has not yet happened.
+
 ## Unreleased / 0.9.0
 
 - Added final pre-v1.0 release audit documentation.

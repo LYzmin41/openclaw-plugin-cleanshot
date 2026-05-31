@@ -2,7 +2,15 @@
 
 This document maps the CleanShot URL Scheme commands currently implemented by the OpenClaw CleanShot plugin to plugin tools, parameters, tests, and agent smoke verification.
 
-This is an implementation audit for the current plugin state. It should be checked against the official CleanShot URL Scheme API documentation before v1.0.0.
+This is an implementation audit for the current plugin state.
+
+## Official API Comparison Status
+
+Compared against the official CleanShot URL Scheme API docs before v1.0.0 based on project-owner review.
+
+- No missing implemented-command categories were found for the current scope.
+- The current known OCR limitation remains: `cleanshot_ocr` triggers CleanShot OCR but does not guarantee returning recognized text to OpenClaw.
+- Future CleanShot API changes should be checked before future major releases.
 
 ## Coverage Table
 
@@ -24,12 +32,12 @@ This is an implementation audit for the current plugin state. It should be check
 
 ## Potential Missing CleanShot API Surface
 
-This section should not be treated as a list of known missing features. It is a placeholder for a future comparison against the official CleanShot URL Scheme API documentation before v1.0.0.
+This section should not be treated as a list of known missing features. It is retained as a checklist for future comparisons against the official CleanShot URL Scheme API documentation.
 
-- [ ] Missing commands
-- [ ] Missing params
-- [ ] Changed params
-- [ ] Unsupported commands
+- [x] Missing commands checked for the current v1.0.0 scope
+- [x] Missing params checked for the current v1.0.0 scope
+- [x] Changed params checked for the current v1.0.0 scope
+- [x] Unsupported commands checked for the current v1.0.0 scope
 - [ ] Behavior that cannot be verified without CleanShot UI interaction
 
 ## Known Limitations
@@ -42,9 +50,9 @@ This section should not be treated as a list of known missing features. It is a 
 
 ## Pre-v1.0 API Audit Checklist
 
-- [ ] Compare this table against the official CleanShot API docs.
-- [ ] Confirm all URL commands are represented.
-- [ ] Confirm all documented params are represented.
-- [ ] Confirm all commands have URL builder tests.
-- [ ] Confirm all tools have at least one agent smoke test.
-- [ ] Confirm README and examples match actual behavior.
+- [x] Compare this table against the official CleanShot API docs.
+- [x] Confirm all URL commands are represented for the current scope.
+- [x] Confirm all documented params are represented for the current scope.
+- [x] Confirm all commands have URL builder tests.
+- [x] Confirm all tools have at least one agent smoke test.
+- [x] Confirm README and examples match actual behavior.
