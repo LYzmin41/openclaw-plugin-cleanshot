@@ -1,0 +1,37 @@
+{
+  "id": "cleanshot",
+  "name": "CleanShot",
+  "version": "0.1.0",
+  "description": "Control CleanShot X on macOS via its official URL Scheme API.",
+  "activation": {
+    "onStartup": false
+  },
+  "contracts": {
+    "tools": [
+      "cleanshot_capture"
+    ]
+  },
+  "configSchema": {
+    "type": "object",
+    "additionalProperties": false,
+    "properties": {
+      "defaultAction": {
+        "type": "string",
+        "enum": [
+          "copy",
+          "save",
+          "annotate",
+          "upload",
+          "pin"
+        ],
+        "default": "save",
+        "description": "Default capture action when a tool call does not provide one."
+      },
+      "includeGeneratedUrlInResult": {
+        "type": "boolean",
+        "default": true,
+        "description": "Include the generated cleanshot:// URL in tool results."
+      }
+    }
+  }
+}
