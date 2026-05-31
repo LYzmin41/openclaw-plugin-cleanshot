@@ -1,5 +1,13 @@
 # Changelog
 
+## Unreleased / 0.6.0
+
+- Added release checklist documentation.
+- Added security documentation.
+- Added troubleshooting documentation.
+- Improved package metadata for release readiness.
+- Improved README documentation links and public install guidance.
+
 ## Unreleased / 0.5.0
 
 - Added CleanShot API coverage audit documentation.

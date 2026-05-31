@@ -1,6 +1,6 @@
 {
   "name": "openclaw-plugin-cleanshot",
-  "version": "0.1.0",
+  "version": "0.6.0",
   "description": "OpenClaw tool plugin for controlling CleanShot X on macOS via its official URL Scheme API.",
   "type": "module",
   "main": "dist/index.js",
@@ -12,8 +12,12 @@
   },
   "files": [
     "dist",
+    "README.md",
+    "CHANGELOG.md",
+    "LICENSE",
     "openclaw.plugin.json",
-    "README.md"
+    "docs",
+    "examples"
   ],
   "scripts": {
     "build": "tsc -p tsconfig.json",
@@ -23,12 +27,15 @@
   "keywords": [
     "openclaw",
     "plugin",
+    "tool",
     "cleanshot",
-    "macos"
+    "screenshot",
+    "macos",
+    "url-scheme"
   ],
   "license": "MIT",
   "engines": {
-    "node": ">=20"
+    "node": ">=22"
   },
   "devDependencies": {
     "@types/node": "^20.12.12",
