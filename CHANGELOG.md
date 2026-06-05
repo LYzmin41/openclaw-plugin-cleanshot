@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.1.1
+
+- Renamed the public ClawHub package slug to `cleanshot-tool`.
+- Updated README install instructions and public listing wording.
+- No runtime tool behavior changed.
+
 ## 1.1.0
 
 - Added `cleanshot_get_displays` utility tool for macOS display geometry.

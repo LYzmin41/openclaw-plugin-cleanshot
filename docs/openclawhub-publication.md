@@ -2,14 +2,15 @@
 
 ## Current Release Readiness Status
 
-- Current latest local tag: `v1.0.2`
-- Current publish candidate: `1.0.2`
+- Current latest local tag: `v1.1.1`
+- Current publish candidate: `1.1.1`
+- Public ClawHub package slug: `cleanshot-tool`
 - Package verification passed with `npm pack --dry-run`
 - Clean package install from the generated tarball passed
 - OpenClaw packaged install from the generated tarball passed locally
 - Runtime loading from the packaged artifact was verified
 - Runtime tools were discovered successfully
-- OpenClawHub / ClawHub publication status: NOT PUBLISHED
+- OpenClawHub / ClawHub publication status: published as `openclaw-plugin-cleanshot` for v1.1.0; `cleanshot-tool` is the current v1.1.1 publish candidate.
 - Author / maintainer: Lyzmin41
 
 Product naming:
@@ -76,7 +77,8 @@ Package metadata now includes:
 
 - Author / maintainer: Lyzmin41
 - Repository: `https://github.com/LYzmin41/openclaw-plugin-cleanshot`
-- Publication status: NOT PUBLISHED
+- Public ClawHub package slug: `cleanshot-tool`
+- Publication status: published previously as `openclaw-plugin-cleanshot`; current package identity is `cleanshot-tool`.
 - OpenClaw compatibility metadata:
   - `openclaw.compat.pluginApi`: `>=2026.5.12`
   - `openclaw.build.openclawVersion`: `2026.5.12`
@@ -113,12 +115,12 @@ Dry-run summary:
 
 - Source: `github:LYzmin41/openclaw-plugin-cleanshot@main`
 - Family: `code-plugin`
-- Name: `openclaw-plugin-cleanshot`
-- Display: `CleanShot`
-- Version: `1.0.2`
+- Name: `cleanshot-tool`
+- Display: `CleanShot Tool`
+- Version: `1.1.1`
 - Files: 25 files
 - Tags: `latest`
-- Actual publication status: NOT PUBLISHED
+- Actual publication status: pending for `cleanshot-tool`
 
 The final manual publish command is documented here but has not been executed:
 

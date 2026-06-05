@@ -4,17 +4,58 @@ CleanShot Tool is an OpenClaw Tool Plugin that adds agent-callable tools for con
 
 It exposes focused OpenClaw tools for screenshots, OCR launch, recording launch, file annotation/pinning, Quick Access, and Settings. It does not expose arbitrary shell execution.
 
-## Release Status
+Published on ClawHub as `cleanshot-tool`.
 
-- Publication status: not yet published to OpenClawHub / ClawHub.
-- Current stable local version: `v1.1.0`.
-- Ready for manual Hub dry-run/publish review, but actual publication has not happened.
+## Install
+
+```sh
+openclaw plugins install clawhub:cleanshot-tool
+```
+
+Package identity:
+
+- Package slug: `cleanshot-tool`
+- GitHub repository: `openclaw-plugin-cleanshot`
+- Display name: CleanShot Tool
+- Plugin id: `cleanshot`
 
 ## Tool Plugin vs Skill
 
-This repository is the universal CleanShot Tool Plugin. It provides executable tools that OpenClaw agents can call.
+CleanShot Tool is the executable OpenClaw Tool Plugin. It provides callable tools for capture, OCR, recording, annotation, pinned references, Quick Access, settings, and display geometry.
 
-A separate optional CleanShot Skill can provide workflow and decision guidance outside this repository. This public plugin intentionally stays focused on executable tools, parameters, URL Scheme behavior, and safety documentation.
+CleanShot Skill is a separate optional workflow layer that can help an agent interpret natural language requests such as named screen regions, multi-monitor captures, and default capture behavior.
+
+The Tool stays universal and function-focused; the Skill contains workflow guidance.
+
+Public Skill slug: `cleanshot-skill`
+
+## Use Cases
+
+- Capture the full screen, a window, a selected area, or the previous capture area.
+- Copy screenshots directly to the clipboard or save them through CleanShot.
+- Open CleanShot All-In-One capture mode from an OpenClaw agent.
+- Start scrolling capture for long pages, chats, documents, and feeds.
+- Run CleanShot OCR / text capture through the agent.
+- Start screen recording mode from the agent.
+- Open a local image/file in CleanShot Annotate.
+- Pin an image or file as a floating CleanShot reference.
+- Open CleanShot Quick Access to browse recent captures.
+- Open CleanShot Settings.
+- Query display geometry for coordinate-based captures, including multi-monitor workflows.
+
+## Example Agent Requests
+
+- "Take a fullscreen screenshot and copy it."
+- "Capture the left half of the main display."
+- "Capture the right half of the second monitor."
+- "Start a scrolling screenshot."
+- "Extract text from the screen with CleanShot OCR."
+- "Record the screen."
+- "Open CleanShot Quick Access."
+- "Pin this image as a floating reference."
+- "Open this file in CleanShot Annotate."
+
+Advanced workflow interpretation can be handled by the separate CleanShot Skill.
 
 ## Requirements
 
@@ -36,7 +77,7 @@ You can test CleanShot URL Scheme support manually with:
 open "cleanshot://capture-fullscreen?action=save"
 ```
 
-## Local Install
+## Local Development Install
 
 ```sh
 npm install
